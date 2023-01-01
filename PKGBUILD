@@ -38,7 +38,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.x
         '0005-lg-laptop_Recognize_more_models.patch'
         # MANJARO Patches
         '0101-i2c-nuvoton-nc677x-hwmon-driver.patch'
-        '0103-futex.patch' # https://github.com/sirlucjan/kernel-patches
+#        '0103-futex.patch' # https://github.com/sirlucjan/kernel-patches
         '0104-revert-xhci-Add-support-for-Renesas-controller-with-memory.patch'
         '0105-quirk-kernel-org-bug-210681-firmware_rome_error.patch'
         '0108-drm_i915_Add_workaround_numbers_to_GEN7_COMMON_SLICE_CHICKEN1_whitelisting.patch::https://patchwork.freedesktop.org/patch/463650/raw/'
@@ -66,14 +66,13 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.x
         '0413-bootsplash.gitpatch')
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             '65d015a10219d4ceb4874cec177a24010600abc17a9d4a2c52474580a936b231'
-            '57f6988ea417c48025e679bc889a9e27e283aab2503e1d48f09cf9f65931e16d'
+            'a640b81c80d60c6ad059fdc38a4b963c49d4bec080ffda7fadf0b921966b4d6e'
             '986f8d802f37b72a54256f0ab84da83cb229388d58c0b6750f7c770818a18421'
             'e2823eff3355b7c88a3fa327ea2f84f23cbd36569e0a5f0f76599023f63a52ca'
             'ce53090a4572cd6162d22225113082f7e4df5028a1230529d170460e26dcf849'
             '76701599bbafa49b90ccb073ef29ce2dc3731566e8fa852bd1e9e7796e184754'
             'a2a0a0542055a6a921542fbb05cedb6eb6f3d3fb0c038bfb2304bfd3931a0f71'
             '7823d7488f42bc4ed7dfae6d1014dbde679d8b862c9a3697a39ba0dae5918978'
-            '844e66a95d7df754c55ac2f1ce7e215b1e56e20ca095462d926a993d557b20e0'
             'd9330ea593829a6ef3b824db9570253280cbff7da2b4beb47cbc037824d1a29b'
             '5e804e1f241ce542f3f0e83d274ede6aa4b0539e510fb9376f8106e8732ce69b'
             'e8e6120035977903a7117ba215809b9b162b64a789848107513f219180baaada'
