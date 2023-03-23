@@ -10,7 +10,7 @@ _kernelname=-MANJARO
 _basekernel=5.15
 _basever=515
 pkgver=5.15.104
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -28,9 +28,7 @@ makedepends=('bc'
     'xz')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.xz"
-        #"https://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
-        "https://www.kernel.org/pub/linux/kernel/v5.x/patch-5.15.103.xz"
-        "https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/stable-review/patch-5.15.104-rc1.xz"
+        "https://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
         'config'
         # ARCH Patches
         '0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch'
@@ -68,8 +66,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.x
         '0412-bootsplash.patch'
         '0413-bootsplash.gitpatch')
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
-            'c7f8848a24616117c6ec1bf0ec6a687d6a169002e8aeec452ef6db40aa734b5b'
-            'b7e6249a41d76a3b9cc6aa959bbe50620625efa213ebb087425e652b4e9c6d11'
+            '271aa630efce0f2550c831ae7c5cf87f073b25ff3a7556a4edadc836d67017e0'
             '0bb7e7ecf9c20682c9fde0dd8df6af4047f68c6488dac9737b288c467353b423'
             '986f8d802f37b72a54256f0ab84da83cb229388d58c0b6750f7c770818a18421'
             'e2823eff3355b7c88a3fa327ea2f84f23cbd36569e0a5f0f76599023f63a52ca'
@@ -106,9 +103,7 @@ prepare() {
 
   # add upstream patch
   msg "add upstream patch"
-  #patch -p1 -i "../patch-${pkgver}"
-  patch -p1 -i "../patch-5.15.103"
-  patch -p1 -i "../patch-5.15.104-rc1"
+  patch -p1 -i "../patch-${pkgver}"
 
   local src
   for src in "${source[@]}"; do
