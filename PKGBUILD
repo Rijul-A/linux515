@@ -49,7 +49,6 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.x
         "0202-mt76-mt7921-add-support-for-PCIe-ID-0x7922-0x0608-0x0616.patch"
         "0203_mt76_mt7921_reduce_log_severity_levels_for_informative_messages.patch"
         "https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/plain/releases/5.15.99/drm-i915-don-t-use-bar-mappings-for-ring-buffers-with-llc.patch"
-        "gcc13.patch"
         # Bootsplash
         '0301-revert-fbcon-remove-now-unusued-softback_lines-cursor-argument.patch'
         '0302-revert-fbcon-remove-no-op-fbcon_set_origin.patch'
@@ -83,7 +82,6 @@ sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             '04fd3142561aa3cd7f4e469099ae294b47b02f4a5b344ff7c813d8593eb634d8'
             'f8fc51c0c644ae743154c37b77ade50fa5a950980c9dd56d8752e4d6b5dfb153'
             'ef343603231a290cfbf4972730390fe5999ecc1e4ff8d617e2304167b949dec9'
-            '8afe46a562961060d38f9d93c05a2044d18ba164e9baa3096618411f92ec5449'
             '2b11905b63b05b25807dd64757c779da74dd4c37e36d3f7a46485b1ee5a9d326'
             '94a8538251ad148f1025cc3de446ce64f73dc32b01815426fb159c722e8fa5bc'
             'ed2a8afc9e3e5f73226b84e10e580ea208752702d8528b994681c5063a6ffa07'
