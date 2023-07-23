@@ -42,8 +42,6 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.x
 #        '0103-futex.patch' # https://github.com/sirlucjan/kernel-patches
         '0104-revert-xhci-Add-support-for-Renesas-controller-with-memory.patch'
         '0105-quirk-kernel-org-bug-210681-firmware_rome_error.patch'
-        # Lenovo + AMD
-        '0201-lenovo-wmi2.patch'
         # other patches
         "0202-mt76-mt7921-add-support-for-PCIe-ID-0x7922-0x0608-0x0616.patch"
         "0203_mt76_mt7921_reduce_log_severity_levels_for_informative_messages.patch"
@@ -76,7 +74,6 @@ sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             '7823d7488f42bc4ed7dfae6d1014dbde679d8b862c9a3697a39ba0dae5918978'
             'd9330ea593829a6ef3b824db9570253280cbff7da2b4beb47cbc037824d1a29b'
             '5e804e1f241ce542f3f0e83d274ede6aa4b0539e510fb9376f8106e8732ce69b'
-            '1d58ef2991c625f6f0eb33b4cb8303932f53f1c4694e42bae24c9cd36d2ad013'
             '04fd3142561aa3cd7f4e469099ae294b47b02f4a5b344ff7c813d8593eb634d8'
             'f8fc51c0c644ae743154c37b77ade50fa5a950980c9dd56d8752e4d6b5dfb153'
             'ef343603231a290cfbf4972730390fe5999ecc1e4ff8d617e2304167b949dec9'
