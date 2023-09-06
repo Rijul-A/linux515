@@ -28,8 +28,7 @@ makedepends=('bc'
     'tar'
     'xz')
 options=('!strip')
-source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.xz"
-        "https://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
+source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${pkgver}.tar.xz"
         'config'
         # ARCH Patches
         '0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch'
@@ -45,6 +44,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.x
         # other patches
         "0202-mt76-mt7921-add-support-for-PCIe-ID-0x7922-0x0608-0x0616.patch"
         "0203_mt76_mt7921_reduce_log_severity_levels_for_informative_messages.patch"
+        "0204_ath11k_pci-wcn6855_amdgpu_vm.patch"
         "https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/plain/releases/5.15.99/drm-i915-don-t-use-bar-mappings-for-ring-buffers-with-llc.patch"
         # Bootsplash
         '0301-revert-fbcon-remove-now-unusued-softback_lines-cursor-argument.patch'
@@ -63,8 +63,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.x
         '0411-bootsplash.patch'
         '0412-bootsplash.patch'
         '0413-bootsplash.gitpatch')
-sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
-            '49c64911f307ef7dfb09e98f547f08c1e23a0d5722bbf87e78882c5ab546d705'
+sha256sums=('ab464e4107329ff5262f1c585c40fc29dc68f17687a9a918f3e90faba5303d62'
             '5aeb8ff1304e420f2a06875107c94bb060d609779d318e6fc35b0c0c684cc483'
             '986f8d802f37b72a54256f0ab84da83cb229388d58c0b6750f7c770818a18421'
             'e2823eff3355b7c88a3fa327ea2f84f23cbd36569e0a5f0f76599023f63a52ca'
@@ -76,6 +75,7 @@ sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             '5e804e1f241ce542f3f0e83d274ede6aa4b0539e510fb9376f8106e8732ce69b'
             '04fd3142561aa3cd7f4e469099ae294b47b02f4a5b344ff7c813d8593eb634d8'
             'f8fc51c0c644ae743154c37b77ade50fa5a950980c9dd56d8752e4d6b5dfb153'
+            'fc3b9448bc563916c1eb51fa22bd134bfab4dd89c48805cba8c29deca5fc212a'
             'ef343603231a290cfbf4972730390fe5999ecc1e4ff8d617e2304167b949dec9'
             '2b11905b63b05b25807dd64757c779da74dd4c37e36d3f7a46485b1ee5a9d326'
             '94a8538251ad148f1025cc3de446ce64f73dc32b01815426fb159c722e8fa5bc'
@@ -95,11 +95,7 @@ sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             '035ea4b2a7621054f4560471f45336b981538a40172d8f17285910d4e0e0b3ef')
 
 prepare() {
-  cd "linux-${_basekernel}"
-
-  # add upstream patch
-  msg "add upstream patch"
-  patch -p1 -i "../patch-${pkgver}"
+  cd "linux-${pkgver}"
 
   local src
   for src in "${source[@]}"; do
@@ -136,10 +132,10 @@ prepare() {
 }
 
 build() {
-  cd "linux-${_basekernel}"
+  cd "linux-${pkgver}"
 
   msg "build"
-  make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+  make -j16 LOCALVERSION= bzImage modules
 }
 
 package_linux515() {
@@ -148,7 +144,7 @@ package_linux515() {
   optdepends=('wireless-regdb: to set the correct wireless channels of your country')
   provides=("linux=${pkgver}" VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
 
-  cd "linux-${_basekernel}"
+  cd "linux-${pkgver}"
 
   # get kernel version
   _kernver="$(make LOCALVERSION= kernelrelease)"
@@ -187,7 +183,7 @@ package_linux515-headers() {
   depends=('gawk' 'python' 'libelf' 'pahole')
   provides=("linux-headers=$pkgver")
 
-  cd "linux-${_basekernel}"
+  cd "linux-${pkgver}"
   local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
 
   install -Dt "${_builddir}" -m644 Makefile .config Module.symvers
